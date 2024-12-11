@@ -1,5 +1,3 @@
-import Directions.North
-
 import scala.io.Source
 import scala.util.{Failure, Success, Using}
 import scala.util.control.Breaks._
@@ -56,7 +54,7 @@ case class GuardState(position: Point, direction: Directions, visited: Set[Point
 
 def part1(numbers: List[String]): Int = {
   val grid = Grid(numbers)
-  val initialState = GuardState(grid.findStart, North, Set(grid.findStart))
+  val initialState = GuardState(grid.findStart, Directions.North, Set(grid.findStart))
 
   def nextState(state: GuardState): GuardState =
     val nextPosition = state.position.stepForward(state.direction)
@@ -80,7 +78,7 @@ def part1(numbers: List[String]): Int = {
 def part2(numbers: List[String]): Int = {
   val grid = Grid(numbers)
   val start = grid.findStart
-  val initialState = GuardState(start, North, Set(start))
+  val initialState = GuardState(start, Directions.North, Set(start))
 
   def nextState(state: GuardState): GuardState =
     val nextPosition = state.position.stepForward(state.direction)
